@@ -10,11 +10,10 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-# Введіть токен вашого бота від @BotFather
 import os
 
 # Бот безпечно завантажить токен із налаштувань сервера
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = "os.getenv("BOT_TOKEN")"
 
 API_URL = "https://api.dimap.live/api/polling"
 
@@ -194,17 +193,16 @@ async def fetch_data_report(city_name, target_lat, target_lng):
     if not filtered_news:
         report += "У поточній стрічці прямих згадок немає.\n"
     else:
-    for item in filtered_news:
-        raw_text = item.get("text", "").replace("<br>", "\n").replace("&!", "!")
-        safe_text = html.escape(raw_text)
-        report += f"• {safe_text}\n"
+        for item in filtered_news:
+            raw_text = item.get("text", "").replace("<br>", "\n").replace("&!", "!")
+            safe_text = html.escape(raw_text)
+            report += f"• {safe_text}\n"
 
-    # Визначаємо київський час (UTC+2 взимку, UTC+3 влітку через zoneinfo)
+    # Визначаємо київський час
     try:
         from zoneinfo import ZoneInfo
         kiev_time = datetime.now(ZoneInfo("Europe/Kiev"))
     except Exception:
-        # Запасний варіант, якщо зона недоступна: жорстко додаємо +3 години до UTC
         kiev_time = datetime.now(timezone(timedelta(hours=3)))
 
     report += f"\n🕒 <i>Оновлено: {kiev_time.strftime('%H:%M:%S')}</i>"
