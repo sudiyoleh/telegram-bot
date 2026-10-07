@@ -13,7 +13,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 import os
 
 # Бот безпечно завантажить токен із налаштувань сервера
-TOKEN = "os.getenv("BOT_TOKEN")"
+TOKEN = os.getenv("BOT_TOKEN")
 
 API_URL = "https://api.dimap.live/api/polling"
 
